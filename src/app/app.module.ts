@@ -10,6 +10,11 @@ import { FamilyModule } from './family/family.module';
 import {FamilyCreatorComponent} from './family/creator/creator.component';
 import {MenuComponent} from './family/menu/menu.component';
 
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import {FatherCreateState} from './family/creator/creator';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -33,6 +38,11 @@ const appRoutes: Routes = [
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     RouterModule.forRoot(appRoutes),
     FamilyModule,
+    NgxsModule.forRoot([
+      FatherCreateState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

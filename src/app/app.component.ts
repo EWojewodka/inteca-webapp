@@ -6,9 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  getState(outlet) {
-    console.log(outlet);
-    return outlet.activatedRouteData.state;
-  }
-}
+export class AppComponent {}
