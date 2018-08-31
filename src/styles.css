@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,800');
+html,
+body,
+app-root,
+#router-trans,
+menu{
+    height: 100%;
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+#app-title {
+  color: #f5f5f5;
+  font-family: 'Work Sans';
+  font-weight: 800;
+}
+
+.design-bg {
+  background-image: url('assets/images/family-flat.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #69d8eb;
+}
+
+#menu {
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.menu-item-wrapper {
+  margin-top: 25%;
+}
+
+.menu-item-wrapper .row{
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.menu-item-wrapper .btn-menu {
+  width: 80%;
+  height: 100px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  font-size: 34px;
+  border: white 4px solid;
+  border-radius: 3px;
+  transition: all .5s ease;
+  font-family: 'Work Sans';
+  font-weight: 400;
+}
+
+.btn-menu:hover {
+  transform: scale(1.1);
+}
+
+#menu .btn-menu:focus {
+    outline: 0;
+    box-shadow: none
+}
