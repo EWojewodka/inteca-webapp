@@ -9,11 +9,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { FamilyModule } from './family/family.module';
 import {FamilyCreatorComponent} from './family/creator/creator.component';
 import {MenuComponent} from './family/menu/menu.component';
+import {FatherState} from './family/creator/father/father-creator';
 
 import { NgxsModule } from '@ngxs/store';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import {FatherCreateState} from './family/creator/creator';
 
 const appRoutes: Routes = [
   {
@@ -39,10 +37,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FamilyModule,
     NgxsModule.forRoot([
-      FatherCreateState
-    ]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+      FatherState
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

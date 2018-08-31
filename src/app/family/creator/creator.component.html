@@ -5,6 +5,41 @@
     </div>
   </div>
   <div class="row">
-    {{controller.form}}
+    <div class="offset-lg-4 col-lg-4">
+      <form [formGroup]="controller.form" class="glass-bg">
+        <div class="form-group inline">
+          <label class="col-md-4 small">First name</label>
+          <input type="text" class="form-control" formControlName="firstname" #firstname/>
+          <div *ngIf="controller.form.controls['firstname'].invalid && (controller.form.controls['firstname'].dirty || controller.form.controls['firstname'].touched)" class="alert alert-danger">
+            <div *ngIf="controller.form.controls['firstname'].errors.required">
+            </div>
+            This field is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 small">Second name</label>
+          <input type="text" class="form-control" formControlName="secondname" #secondname/>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 small">Pesel</label>
+          <input type="text" class="form-control" formControlName="pesel" #pesel/>
+          <div *ngIf="controller.form.controls['pesel'].invalid && (controller.form.controls['pesel'].dirty || controller.form.controls['pesel'].touched)" class="alert alert-danger">
+            <div *ngIf="controller.form.controls['pesel'].errors.required">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 small">Born date</label>
+          <input type="date" class="form-control" formControlName="born" #born/>
+          <div *ngIf="controller.form.controls['born'].invalid && (controller.form.controls['born'].dirty || controller.form.controls['born'].touched)" class="alert alert-danger">
+            <div *ngIf="controller.form.controls['born'].errors.required">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <button (click)="controller.addFather(firstname.value,secondname.value, pesel.value, born.value)" class="btn btn-default">Create!</button>
+      </form>
+    </div>
   </div>
 </div>

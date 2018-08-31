@@ -1,42 +1,19 @@
-import { Component } from '@angular/core';
-import FatherCreator from './father/fatherCreator';
-import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { Component,  OnInit } from '@angular/core';
+import FatherCreator from './father/father-creator';
 import {Father} from './father/father';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 
 @Component({
   templateUrl: './creator.component.html',
   styleUrls: ['./creator.component.css']
 })
-
-export class FatherCreateStateModel {
-  firstname: string;
-  secondname: string;
-  pesel: string;
-  born: string;
-}
-
-@State<FatherCreateStateModel>({
-  name: 'father_state',
-  defaults: {
-    firstname: '',
-    secondname: ''
+export class FamilyCreatorComponent implements OnInit{
+  controller = new FatherCreator(this.form, this.store);
+  constructor(private form: FormBuilder, private store: Store) {
   }
-})
-export class FatherCreateState {
 
-  @Action(AddFather)
-  add({getState, patchState}: StateContext<FatherCreateStateModel>, {payload}: AddFather){
-    const state = getState();
-    patchState({
-      firstname: [...state.firstname, payload],
-      secondname: [...state.secondname, payload],
-      pesel: [...state.pesel, payload],
-      born: [...state.born, payload],
-    });
-  }
-}
+   ngOnInit(){}
 
-export class FamilyCreatorComponent {
-
-  controller = new FatherCreator();
 }
