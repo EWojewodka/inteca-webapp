@@ -25,7 +25,10 @@ export default class ChildCreator implements OnInit{
   }
 
   addChild(firstname, secondname, pesel, sex) {
+    if(this.form.status !== 'VALID')
+      return;
     this.children.push(new Child(firstname, secondname, pesel, sex));
+    this.form.reset();
   }
 
 }

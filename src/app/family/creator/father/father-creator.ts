@@ -13,18 +13,20 @@ export default class FatherCreator implements OnInit{
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      firstname: ['', Validators.required ],
-      secondname: ['', Validators.required ],
-      pesel: ['', Validators.required ],
-      born: ['', Validators.required ]
+      firstname: ['Marek', Validators.required ],
+      secondname: ['Grechuta', null],
+      pesel: ['12345678912', [Validators.required, Validators.pattern("\\d{11}")]],
+      born: ['1945-12-10', [Validators.required, Validators.pattern("\\d{4}-\\d{2}-\\d{2}")] ]
     });
   }
 
   ngOnInit(){}
 
   addFather(firstname, secondname, pesel, born) {
+    if(this.form.status !== 'VALID')
+      return;
+
     this.father = new Father(firstname, secondname, pesel, born);
-    console.log(this.father);
   }
 
 }

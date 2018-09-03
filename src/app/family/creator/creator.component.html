@@ -17,10 +17,9 @@
         </mat-step>
         <mat-step>
            <ng-template matStepLabel>Done</ng-template>
-           You are now done.
-           <div>
-             <button mat-button (click)="finish()" matStepperPrevious>Create family!</button>
-             <button mat-button (click)="stepper.reset()">Reset</button>
+           <div class="btn-wrapper vertical">
+             <button mat-button (click)="finish()" matStepperPrevious class="btn btn-step">Create family!</button>
+             <button mat-button (click)="stepper.reset()" class="btn btn-step small">Reset</button>
            </div>
          </mat-step>
       </mat-horizontal-stepper>

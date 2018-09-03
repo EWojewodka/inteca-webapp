@@ -75,5 +75,55 @@ menu{
 }
 
 .btn.btn-step {
-  background-color: #eaeb69;
+  background-color: rgba(255,255,255,0.2);
+  float: right;
+  border: solid white 2px;
+  color: white;
+  margin-left: 10px;
+}
+
+.btn-wrapper {
+  align-items: end;
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.btn.small {
+  height: 30px;
+  width: 70px;
+  font-size: 70% !important;
+}
+
+.btn-wrapper.vertical {
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+}
+
+.btn-wrapper.vertical .btn-step {
+  font-size: 130%;
+  margin-bottom: 15px;
+  margin-left: 0;
+  width: auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.dark-blue-bg {
+  background-color: rgba(105,216,235, 0.8);
+}
+
+.block {
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.19);
+}
+
+.white{
+  color: white;
 }

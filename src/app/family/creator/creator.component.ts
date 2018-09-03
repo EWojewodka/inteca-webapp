@@ -26,6 +26,8 @@ export class FamilyCreatorComponent implements OnInit{
     family.father = this.fatherCreatorStep.father;
     family.children = this.childCreatorStep.children;
     this.http.post("http://localhost:8080/api/family/create", family).subscribe((res) => console.log(res), (err) => console.log(err));
+    family.father = null;
+    family.children = [];
   }
 
 }

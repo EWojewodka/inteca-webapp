@@ -9,9 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FamilyModule } from './family/family.module';
 import {FamilyCreatorComponent} from './family/creator/creator.component';
 import {MenuComponent} from './family/menu/menu.component';
-/*import {FatherState} from './family/creator/father/father-creator';*/
-
-import { NgxsModule } from '@ngxs/store';
+import {FamilyPreviewComponent} from './family/preview/main.component';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +22,11 @@ const appRoutes: Routes = [
     path: 'creator',
     component: FamilyCreatorComponent,
     data: {state: 'creator'}
+  },
+  {
+    path: 'preview',
+    component: FamilyPreviewComponent,
+    data: {state: 'preview'}
   }
 ];
 
@@ -35,10 +38,7 @@ const appRoutes: Routes = [
     BrowserModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     RouterModule.forRoot(appRoutes),
-    FamilyModule,
-    NgxsModule.forRoot([
-      /*FatherState*/
-    ])
+    FamilyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

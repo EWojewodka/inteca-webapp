@@ -11,13 +11,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import FatherCreator from './creator/father/father-creator';
 import ChildCreator from './creator/children/child-creator';
 import { HttpClientModule } from '@angular/common/http';
+import {FamilyPreviewComponent} from './preview/main.component';
+import {FamilySearch} from './search/search.component';
 
 @NgModule({
   declarations: [
     FamilyCreatorComponent,
     MenuComponent,
     FatherCreator,
-    ChildCreator
+    ChildCreator,
+    FamilyPreviewComponent,
+    FamilySearch
   ],
   imports: [
     RouterModule,

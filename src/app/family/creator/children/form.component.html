@@ -30,5 +30,8 @@
       </div>
     </div>
   </div>
-    <button mat-button matStepperNext class="btn btn-default btn-step" (click)="addChild(firstname.value, secondname.value, pesel.value, sex.value)">Next</button>
+  <div class="btn-wrapper">&nbsp;
+    <button mat-button class="btn btn-default btn-step" (click)="addChild(firstname.value, secondname.value, pesel.value, sex.value)">Save child</button>
+    <button mat-button matStepperNext class="btn btn-default btn-step small">Skip</button>
+  </div>
 </form>
