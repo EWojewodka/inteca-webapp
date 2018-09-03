@@ -73,3 +73,7 @@ menu{
   font-size: 80%;
   position: relative;
 }
+
+.btn.btn-step {
+  background-color: #eaeb69;
+}

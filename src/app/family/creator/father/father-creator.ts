@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import Father from './father';
 
+@Component({
+  selector: 'father-creator',
+  templateUrl: 'form.component.html'
+})
 export default class FatherCreator implements OnInit{
   title = "Creator of fathers";
-  form: FormGroup;
+  public form: FormGroup;
+  public father: Father;
 
-  constructor(private fb: FormBuilder, private store: Store) {
-    this.createForm();
-  }
-
-  createForm() {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       firstname: ['', Validators.required ],
       secondname: ['', Validators.required ],
@@ -19,49 +20,11 @@ export default class FatherCreator implements OnInit{
     });
   }
 
-  addFather(firstname,secondname,pesel, born){
-    this.store.dispatch(new AddFather({firstname,secondname,pesel, born}));
-  }
-
   ngOnInit(){}
 
-}
-
-export interface Father {
-  firstname: string;
-  secondname: string;
-  pesel: string;
-  born: string;
-}
-
-export class AddFather {
-  static readonly type = "[Father] Add";
-
-  constructor(public payload: Father){}
-}
-
-export class FatherStateModel {
-  fathers: Father[];
-}
-
-@State<FatherStateModel>({
-  name: 'fathers',
-  defaults: {
-    fathers: []
-  }
-})
-export class FatherState {
-
-  @Selector()
-  static getFathers(state: FatherStateModel) {
-    return state.fathers;
+  addFather(firstname, secondname, pesel, born) {
+    this.father = new Father(firstname, secondname, pesel, born);
+    console.log(this.father);
   }
 
-  @Action(AddFather)
-  add({getState, patchState }: StateContext<FatherStateModel>, { payload }: AddFather) {
-    const state = getState();
-    patchState({
-      users: [...state.fathers, payload]
-    });
-  }
 }

@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FamilyModule } from './family/family.module';
 import {FamilyCreatorComponent} from './family/creator/creator.component';
 import {MenuComponent} from './family/menu/menu.component';
-import {FatherState} from './family/creator/father/father-creator';
+/*import {FatherState} from './family/creator/father/father-creator';*/
 
 import { NgxsModule } from '@ngxs/store';
 
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FamilyModule,
     NgxsModule.forRoot([
-      FatherState
+      /*FatherState*/
     ])
   ],
   providers: [],

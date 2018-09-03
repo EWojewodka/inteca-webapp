@@ -1,19 +1,31 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  OnInit, ViewChild } from '@angular/core';
 import FatherCreator from './father/father-creator';
-import {Father} from './father/father';
+import ChildCreator from './children/child-creator';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Store } from '@ngxs/store';
+import { HttpClient } from '@angular/common/http';
+import Family from './../family';
 
 @Component({
   templateUrl: './creator.component.html',
   styleUrls: ['./creator.component.css']
 })
 export class FamilyCreatorComponent implements OnInit{
-  controller = new FatherCreator(this.form, this.store);
-  constructor(private form: FormBuilder, private store: Store) {
+
+  @ViewChild(FatherCreator) fatherCreatorStep: FatherCreator;
+  @ViewChild(ChildCreator) childCreatorStep: ChildCreator;
+
+  isLinear = true;
+
+  constructor(private fb: FormBuilder, private http: HttpClient) {
   }
 
-   ngOnInit(){}
+  ngOnInit(){}
+
+  finish(){
+    var family = new Family();
+    family.father = this.fatherCreatorStep.father;
+    family.children = this.childCreatorStep.children;
+    this.http.post("http://localhost:8080/api/family/create", family).subscribe((res) => console.log(res), (err) => console.log(err));
+  }
 
 }

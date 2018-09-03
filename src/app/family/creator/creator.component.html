@@ -1,45 +1,29 @@
 <div class="container-fluid design-bg" id="menu">
   <div class="row text-center">
     <div class="col-lg-12">
-      <h3 class="display-3" id="app-title" >{{controller.title}}</h3>
+      <h3 class="display-3" id="app-title" >Family creator</h3>
     </div>
   </div>
   <div class="row">
     <div class="offset-lg-4 col-lg-4">
-      <form [formGroup]="controller.form" class="glass-bg">
-        <div class="form-group inline">
-          <label class="col-md-4 small">First name</label>
-          <input type="text" class="form-control" formControlName="firstname" #firstname/>
-          <div *ngIf="controller.form.controls['firstname'].invalid && (controller.form.controls['firstname'].dirty || controller.form.controls['firstname'].touched)" class="alert alert-danger">
-            <div *ngIf="controller.form.controls['firstname'].errors.required">
-            </div>
-            This field is required
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4 small">Second name</label>
-          <input type="text" class="form-control" formControlName="secondname" #secondname/>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4 small">Pesel</label>
-          <input type="text" class="form-control" formControlName="pesel" #pesel/>
-          <div *ngIf="controller.form.controls['pesel'].invalid && (controller.form.controls['pesel'].dirty || controller.form.controls['pesel'].touched)" class="alert alert-danger">
-            <div *ngIf="controller.form.controls['pesel'].errors.required">
-              This field is required.
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-4 small">Born date</label>
-          <input type="date" class="form-control" formControlName="born" #born/>
-          <div *ngIf="controller.form.controls['born'].invalid && (controller.form.controls['born'].dirty || controller.form.controls['born'].touched)" class="alert alert-danger">
-            <div *ngIf="controller.form.controls['born'].errors.required">
-              This field is required.
-            </div>
-          </div>
-        </div>
-        <button (click)="controller.addFather(firstname.value,secondname.value, pesel.value, born.value)" class="btn btn-default">Create!</button>
-      </form>
+      <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="fatherCreatorStep.form">
+          <ng-template matStepLabel>Create father</ng-template>
+          <father-creator #fatherCreatorStep></father-creator>
+        </mat-step>
+        <mat-step [stepControl]="childCreatorForm" optional>
+          <ng-template matStepLabel>Create child</ng-template>
+          <child-creator #childCreatorStep></child-creator>
+        </mat-step>
+        <mat-step>
+           <ng-template matStepLabel>Done</ng-template>
+           You are now done.
+           <div>
+             <button mat-button (click)="finish()" matStepperPrevious>Create family!</button>
+             <button mat-button (click)="stepper.reset()">Reset</button>
+           </div>
+         </mat-step>
+      </mat-horizontal-stepper>
     </div>
   </div>
 </div>
