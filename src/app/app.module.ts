@@ -24,9 +24,9 @@ const appRoutes: Routes = [
     data: {state: 'creator'}
   },
   {
-    path: 'preview',
+    path: 'search',
     component: FamilyPreviewComponent,
-    data: {state: 'preview'}
+    data: {state: 'search'}
   }
 ];
 

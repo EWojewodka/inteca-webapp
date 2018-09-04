@@ -1,7 +1,7 @@
 <div class="obscure-bg">&nbsp;</div>
 <div class="container-fluid design-bg" id="menu">
   <div class="row">
-    <div class="col-lg-3 block">
+    <div class="col-lg-3">
       <div class="full-width full-height">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -9,29 +9,29 @@
           </div>
         </div>
         <div class="row">
-          <form [formGroup]="filterForm" class="filter-panel">
+          <form [formGroup]="filterForm" class="filter-panel form">
             <div class="form-group row">
-              <label class="col-sm-4 col-form-label small">First name</label>
-              <div class="col-sm-8">
-                <input type="text" class="filter-input" formControlName="firstname" #firstname/>
+              <label class="col-lg-4 col-form-label small">First name</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName="firstname" #firstname/>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-4 col-form-label small">Second name</label>
-              <div class="col-sm-8">
-                <input type="text" class="filter-input" formControlName="secondname" #secondname/>
+              <label class="col-lg-4 col-form-label small">Second name</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName="secondname" #secondname/>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-4 col-form-label small">Pesel</label>
-              <div class="col-sm-8">
-                <input type="text" class="filter-input" formControlName="pesel" #pesel/>
+              <label class="col-lg-4 col-form-label small">Pesel</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName="pesel" #pesel/>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-4 col-form-label small">Sex</label>
-              <div class="col-sm-8">
-                <input type="text" class="filter-input" formControlName="sex" #sex/>
+              <label class="col-lg-4 col-form-label small">Sex</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" formControlName="sex" #sex/>
               </div>
             </div>
             <div class="form-group row">
@@ -47,34 +47,31 @@
     </div>
 
     <div class="offset-lg-1 col-lg-8 mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table matSort  [dataSource]="dataSource" class="block">
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element">{{element.id}} </td>
         </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
           <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
         </ng-container>
         <ng-container matColumnDef="second name">
-          <th mat-header-cell *matHeaderCellDef> Secondname </th>
-          <td mat-cell *matCellDef="let element"> {{element.secondname}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Second name </th>
+          <td mat-cell *matCellDef="let element"> {{element.secondName}} </td>
         </ng-container>
         <ng-container matColumnDef="pesel">
-          <th mat-header-cell *matHeaderCellDef> Pesel </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Pesel </th>
           <td mat-cell *matCellDef="let element"> {{element.pesel}} </td>
         </ng-container>
         <ng-container matColumnDef="born">
-          <th mat-header-cell *matHeaderCellDef> Birthday </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday </th>
           <td mat-cell *matCellDef="let element"> {{element.born}} </td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="block"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showFamily(row)"></tr>
       </table>
-      <mat-paginator
-              [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
+      <mat-paginator [pageSize]="12">
       </mat-paginator>
     </div>
   </div>

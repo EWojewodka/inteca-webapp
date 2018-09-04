@@ -1,19 +1,26 @@
-import {Component, OnInit, Injectable} from '@angular/core';
+import {Component, OnInit, Injectable, ViewChild} from '@angular/core';
 import Father from './../creator/father/father';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {DataSource} from '@angular/cdk/collections';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {MatSort, MatTableDataSource, MatPaginator} from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'family-preview',
   templateUrl: 'main.component.html'
 })
 export class FamilyPreviewComponent {
+
+  @ViewChild(MatSort) sort: MatSort;
+  dataSource = new MatTableDataSource();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   filterForm: FormGroup;
   displayedColumns = ['id', 'name', 'second name', 'pesel', 'born'];
-  dataSource = new FatherDataSource();
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.filterForm = this.fb.group({
       firstname: [null],
       secondname: [null],
@@ -23,6 +30,12 @@ export class FamilyPreviewComponent {
   }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  showFamily(row){
+    this.router.navigate(['/create']);
   }
 
   search(){
@@ -34,7 +47,8 @@ export class FamilyPreviewComponent {
     .set('sex', this.getOrEmptyString(values.sex));
     this.http.get<Father[]>("http://localhost:8080/api/family/search", {params: params})
     .subscribe((res) => {
-      this.dataSource.setData(res);
+      console.log(this.dataSource);
+      this.dataSource.data = res;
     }, (err) => {
       console.log(err)
     });
@@ -44,19 +58,4 @@ export class FamilyPreviewComponent {
     return value === undefined || value === null ? '' : value;
   }
 
-}
-
-export class FatherDataSource extends DataSource<any> {
-  data = new BehaviorSubject<>();
-
-  connect() : Observable<any[]> {
-    return this.data;
-  }
-
-  setData(data) {
-    this.data = new BehaviorSubject<>(data);
-    console.log(this);
-  }
-
-  disconnect(){}
 }

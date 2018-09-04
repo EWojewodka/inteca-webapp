@@ -6,7 +6,8 @@ import { MenuComponent} from './menu/menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatStepperModule} from '@angular/material/stepper';
-import {MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule} from '@angular/material';
+import {OverlayModule, OverlayContainer, FullscreenOverlayContainer} from '@angular/cdk/overlay';
+import {MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import FatherCreator from './creator/father/father-creator';
 import ChildCreator from './creator/children/child-creator';
@@ -30,11 +31,13 @@ import {FamilyPreviewComponent} from './preview/main.component';
     MatPaginatorModule,
     MatTableModule,
     MatInputModule,
+    MatSortModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    OverlayModule
   ],
   exports: [
   ],
-  providers: []
+  providers: [{provide: OverlayContainer, useClass: FullscreenOverlayContainer}]
 })
 export class FamilyModule { }

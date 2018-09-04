@@ -14,7 +14,7 @@ export default class FatherCreator implements OnInit{
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       firstname: ['Marek', Validators.required ],
-      secondname: ['Grechuta', null],
+      secondname: ['Grechuta', Validators.required],
       pesel: ['12345678912', [Validators.required, Validators.pattern("\\d{11}")]],
       born: ['1945-12-10', [Validators.required, Validators.pattern("\\d{4}-\\d{2}-\\d{2}")] ]
     });
