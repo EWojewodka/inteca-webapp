@@ -6,13 +6,12 @@ import { MenuComponent} from './menu/menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatStepperModule} from '@angular/material/stepper';
-import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import FatherCreator from './creator/father/father-creator';
 import ChildCreator from './creator/children/child-creator';
 import { HttpClientModule } from '@angular/common/http';
 import {FamilyPreviewComponent} from './preview/main.component';
-import {FamilySearch} from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import {FamilySearch} from './search/search.component';
     MenuComponent,
     FatherCreator,
     ChildCreator,
-    FamilyPreviewComponent,
-    FamilySearch
+    FamilyPreviewComponent
   ],
   imports: [
     RouterModule,
@@ -29,6 +27,8 @@ import {FamilySearch} from './search/search.component';
     CommonModule,
     MatStepperModule,
     MatFormFieldModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatInputModule,
     BrowserAnimationsModule,
     HttpClientModule

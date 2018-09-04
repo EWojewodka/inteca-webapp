@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,800');
+
 html,
 body,
 app-root,
@@ -23,6 +24,15 @@ menu{
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #69d8eb;
+}
+
+.obscure-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, white, transparent);
+  position: absolute;
+  top: 0;
+  left:0;
 }
 
 #menu {
@@ -126,4 +136,23 @@ menu{
 
 .white{
   color: white;
+}
+
+.filter-panel {
+  width: 100%;
+}
+
+.bold{
+    font-weight: 800 !important;
+}
+
+.mat-table {
+  width: auto;
+  min-width: 780px;
+  max-height: 700px;
+}
+
+.mat-header-cell{
+  padding: 5px 10px;
+  text-align: center;
 }

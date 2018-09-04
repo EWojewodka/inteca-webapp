@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
 import Child from './child';
 
 @Component({
@@ -12,7 +11,7 @@ export default class ChildCreator implements OnInit{
   form: FormGroup;
   children = [];
 
-  constructor(private fb: FormBuilder, private store: Store) {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(){
