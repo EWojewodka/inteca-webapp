@@ -1,3 +1,8 @@
+/**
+* Person presentation as js object.
+* @see Father
+* @see Child
+*/
 export default class Person {
   firstname: string;
   secondname: string;

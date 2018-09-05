@@ -1,42 +1,41 @@
-<div class="obscure-bg">&nbsp;</div>
 <div class="container-fluid design-bg" id="menu">
+  <header></header>
   <div class="row">
     <div class="col-lg-3">
-      <div class="full-width full-height">
+      <div class="full-width">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h3 class="display-3 bold">search</h3>
-          </div>
-        </div>
-        <div class="row">
-          <form [formGroup]="filterForm" class="filter-panel form">
+          <form [formGroup]="filterForm" class="filter-panel form glass-bg dark-blue-bg block">
             <div class="form-group row">
-              <label class="col-lg-4 col-form-label small">First name</label>
+              <label class="col-lg-4 col-form-label small">First name:</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" formControlName="firstname" #firstname/>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-4 col-form-label small">Second name</label>
+              <label class="col-lg-4 col-form-label small">Second name:</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" formControlName="secondname" #secondname/>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-4 col-form-label small">Pesel</label>
+              <label class="col-lg-4 col-form-label small">Pesel:</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" formControlName="pesel" #pesel/>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-4 col-form-label small">Sex</label>
+              <label class="col-lg-4 col-form-label small">Sex:</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" formControlName="sex" #sex/>
+                <select class="form-control" formControlName="sex" #sex>
+                  <option value=""></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
               </div>
             </div>
             <div class="form-group row">
-              <div class="offset-lg-8 col-lg-2">
-                <button class="btn btn-default" (click)="search()">Search</button>
+              <div class="offset-lg-8 col-lg-2 ">
+                <button class="btn btn-default btn-step" (click)="search()">Search</button>
               </div>
             </div>
           </form>
@@ -47,7 +46,7 @@
     </div>
 
     <div class="offset-lg-1 col-lg-8 mat-elevation-z8">
-      <table mat-table matSort  [dataSource]="dataSource" class="block">
+      <table mat-table matSort  [dataSource]="dataSource" class="block dark-blue-bg">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
           <td mat-cell *matCellDef="let element">{{element.id}} </td>

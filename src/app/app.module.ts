@@ -10,6 +10,8 @@ import { FamilyModule } from './family/family.module';
 import {FamilyCreatorComponent} from './family/creator/creator.component';
 import {MenuComponent} from './family/menu/menu.component';
 import {FamilyPreviewComponent} from './family/preview/main.component';
+import {FamilyProfileComponent} from './family/profile/profile.component';
+
 
 const appRoutes: Routes = [
   {
@@ -27,6 +29,10 @@ const appRoutes: Routes = [
     path: 'search',
     component: FamilyPreviewComponent,
     data: {state: 'search'}
+  },
+  {
+    path: 'profile/:fatherId',
+    component: FamilyProfileComponent
   }
 ];
 

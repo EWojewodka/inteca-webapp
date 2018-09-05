@@ -16,14 +16,15 @@ export default class ChildCreator implements OnInit{
 
   ngOnInit(){
     this.form = this.fb.group({
-      firstname: ['', Validators.required ],
-      secondname: ['', Validators.required ],
-      pesel: ['', Validators.required ],
+      firstname: ['Super', Validators.required ],
+      secondname: ['Bobo', Validators.required ],
+      pesel: ['00000000000', Validators.required ],
       sex: ['', Validators.required ]
     });
   }
 
   addChild(firstname, secondname, pesel, sex) {
+    //Ugh, I have no idea how to check it in other way. :<
     if(this.form.status !== 'VALID')
       return;
     this.children.push(new Child(firstname, secondname, pesel, sex));

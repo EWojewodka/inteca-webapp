@@ -1,0 +1,23 @@
+<div class="container-fluid design-bg" id="menu">
+  <header></header>
+  <div class="row">
+      <div class="offset-lg-3 col-lg-6 glass-bg block">
+        <div class="row text-center d-flex justify-content-center">
+          <div class="person-tile block glass-bg">
+            <div class="bold">Firstname: </div>{{father.firstname}} <br/>
+            <div class="bold">Secondname: </div>{{father.secondName}} <br />
+            <div class="bold">Pesel: </div>{{father.pesel}} <br />
+            <div class="bold">Born: </div>{{father.born}}
+          </div>
+        </div>
+        <div class="row children-tiles d-flex justify-content-around">
+          <div class="person-tile child block text-center glass-bg" *ngFor="let child of children">
+            <div class="bold">Firstname: </div>{{child.firstname}} <br/>
+            <div class="bold">Secondname: </div>{{child.secondName}} <br />
+            <div class="bold">Pesel: </div>{{child.pesel}} <br />
+            <div class="bold">Born: </div>{{child.sex}}
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  templateUrl: './menu.component.html'
 })
-
 export class MenuComponent {
-  title = 'Make kids no war';
 }
