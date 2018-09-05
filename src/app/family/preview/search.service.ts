@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpParams} from '@angular/common/http';
+import {ApiConnector} from '../../api/api-connector.service';
+
 
 @Injectable()
 export class SearchService {
 
-  constructor(private http: HttpClient){}
+  constructor(private api: ApiConnector){}
 
-  public search(params){
-    console.log(params);
-    this.http.get<any[]>("http://localhost:8080/api/family/search", {params: params})
-    .subscribe((res) => console.log(res), (err) => {
-      console.log(err)
-    });
+  public search(params, callback){
+    this.api.get('family/search', params, res => callback(res), err => console.log(err));
   }
 
 }

@@ -4,20 +4,22 @@
     <div class="offset-lg-4 col-lg-4">
       <mat-horizontal-stepper [linear]="true" #stepper>
         <mat-step [stepControl]="fatherCreatorStep.form">
-          <ng-template matStepLabel>Create father</ng-template>
+          <ng-template matStepLabel><i class="material-icons">person_add</i></ng-template>
           <father-creator #fatherCreatorStep></father-creator>
         </mat-step>
-        <mat-step [stepControl]="childCreatorForm" optional>
-          <ng-template matStepLabel>Create child</ng-template>
+        <mat-step [stepControl]="childCreatorForm">
+          <ng-template matStepLabel><i class="material-icons">child_care</i></ng-template>
           <child-creator #childCreatorStep></child-creator>
         </mat-step>
         <mat-step>
-           <ng-template matStepLabel>Done</ng-template>
+           <ng-template matStepLabel><i class="material-icons">save</i></ng-template>
            <div class="btn-wrapper vertical">
              <button mat-button (click)="finish()" class="btn btn-step">Create family!</button>
              <button mat-button (click)="stepper.reset()" class="btn btn-step small">Reset</button>
            </div>
          </mat-step>
+         <ng-template matStepperIcon="number" let-index="index">
+        </ng-template>
       </mat-horizontal-stepper>
     </div>
   </div>

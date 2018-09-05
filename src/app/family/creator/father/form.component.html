@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <ng-template matStepLabel>Create father</ng-template>
   <div class="form-group inline">
-    <label class="col-md-4 small">First name</label>
+    <label class="col-md-12 small">First name *</label>
     <input type="text" class="form-control" formControlName="firstname" #firstname/>
     <div *ngIf="form.controls['firstname'].invalid && (form.controls['firstname'].dirty || form.controls['firstname'].touched)" class="alert alert-danger">
       <div *ngIf="form.controls['firstname'].errors.required">
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-4 small">Second name</label>
+    <label class="col-md-12 small">Second name *</label>
     <input type="text" class="form-control" formControlName="secondname" #secondname/>
     <div *ngIf="form.controls['secondname'].invalid && (form.controls['secondname'].dirty || form.controls['secondname'].touched)" class="alert alert-danger">
       <div *ngIf="form.controls['secondname'].errors.required">
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-4 small">Pesel</label>
+    <label class="col-md-12 small">Pesel * <small>(11 numbers)</small></label>
     <input type="text" class="form-control" formControlName="pesel" #pesel/>
     <div *ngIf="form.controls['pesel'].invalid && (form.controls['pesel'].dirty || form.controls['pesel'].touched)" class="alert alert-danger">
       <div *ngIf="form.controls['pesel'].errors.required">
@@ -28,13 +28,13 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-4 small">Born date</label>
-    <input type="text" class="form-control" formControlName="born" #born/>
-    <div *ngIf="form.controls['born'].invalid && (form.controls['born'].dirty || form.controls['born'].touched)" class="alert alert-danger">
-      <div *ngIf="form.controls['born'].errors.required">
+    <label class="col-md-12 small">Date of birth <small>(year-mo-da)</small></label>
+    <input type="text" class="form-control" formControlName="dateOfBirth" #dateOfBirth/>
+    <div *ngIf="form.controls['dateOfBirth'].invalid && (form.controls['dateOfBirth'].dirty || form.controls['dateOfBirth'].touched)" class="alert alert-danger">
+      <div *ngIf="form.controls['dateOfBirth'].errors.required">
         This field is required.
       </div>
     </div>
   </div>
-  <button mat-button matStepperNext class="btn btn-default btn-step" (click)="addFather(firstname.value, secondname.value, pesel.value, born.value)">Save father</button>
+  <button mat-button matStepperNext class="btn btn-default btn-step" (click)="addFather(firstname.value, secondname.value, pesel.value, dateOfBirth.value)">Save father</button>
 </form>

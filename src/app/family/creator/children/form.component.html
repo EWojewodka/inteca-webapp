@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <div class="form-group inline">
-    <label class="col-md-4 small">First name</label>
+    <label class="col-md-12 small">First name *</label>
     <input type="text" class="form-control" formControlName="firstname" #firstname/>
     <div *ngIf="form.controls['firstname'].invalid && (form.controls['firstname'].dirty || form.controls['firstname'].touched)" class="alert alert-danger">
       <div *ngIf="form.controls['firstname'].errors.required">
@@ -9,11 +9,16 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-4 small">Second name</label>
+    <label class="col-md-12 small">Second name *</label>
     <input type="text" class="form-control" formControlName="secondname" #secondname/>
+    <div *ngIf="form.controls['secondname'].invalid && (form.controls['secondname'].dirty || form.controls['secondname'].touched)" class="alert alert-danger">
+      <div *ngIf="form.controls['secondname'].errors.required">
+        This field is required
+      </div>
+    </div>
   </div>
   <div class="form-group">
-    <label class="col-md-4 small">Pesel</label>
+    <label class="col-md-12 small">Pesel * <small>(11 numbers)</small></label>
     <input type="text" class="form-control" formControlName="pesel" #pesel/>
     <div *ngIf="form.controls['pesel'].invalid && (form.controls['pesel'].dirty || form.controls['pesel'].touched)" class="alert alert-danger">
       <div *ngIf="form.controls['pesel'].errors.required">
@@ -22,20 +27,24 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-4 small">Sex</label>
+    <label class="col-md-12 small">Birth of date * <small>(year-mo-da)</small></label>
+    <input type="text" class="form-control" formControlName="dateOfBirth" #dateOfBirth/>
+    <div *ngIf="form.controls['dateOfBirth'].invalid && (form.controls['dateOfBirth'].dirty || form.controls['dateOfBirth'].touched)" class="alert alert-danger">
+      <div *ngIf="form.controls['dateOfBirth'].errors.required">
+        This field is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-12 small">Sex *</label>
     <select formControlName="sex" #sex class="select form-control">
       <option value='' disabled selected value></option>
       <option value='Male'>Male</option>
       <option value='Female'>Female</option>
     </select>
-    <div *ngIf="form.controls['sex'].invalid && (form.controls['sex'].dirty || form.controls['sex'].touched)" class="alert alert-danger">
-      <div *ngIf="form.controls['sex'].errors.required">
-        This field is required.
-      </div>
-    </div>
   </div>
   <div class="btn-wrapper">&nbsp;
-    <button mat-button class="btn btn-default btn-step" (click)="addChild(firstname.value, secondname.value, pesel.value, sex.value)">Save child</button>
+    <button mat-button class="btn btn-default btn-step" (click)="addChild(firstname.value, secondname.value, pesel.value,dateOfBirth.value, sex.value)">Save child</button>
     <button mat-button matStepperNext class="btn btn-default btn-step small">Skip</button>
   </div>
 </form>

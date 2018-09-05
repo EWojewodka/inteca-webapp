@@ -185,10 +185,6 @@ a:hover, a:active, a:focus {
   text-align: center;
 }
 
-.cdk-overlay-container {
-  display: none !important;
-}
-
 .family-board {
   min-height: 700px;
   height: auto;

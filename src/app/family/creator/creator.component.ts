@@ -5,10 +5,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import Family from './../family';
 import { Router } from '@angular/router';
+import {ApiConnector} from '../../api/api-connector.service';
 
 @Component({
-  templateUrl: './creator.component.html',
-  styleUrls: ['./creator.component.css']
+  templateUrl: './creator.component.html'
 })
 export class FamilyCreatorComponent implements OnInit{
 
@@ -17,7 +17,9 @@ export class FamilyCreatorComponent implements OnInit{
 
   isLinear = true;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private route: Router) {
+  constructor(private fb: FormBuilder,
+              private apiConnector: ApiConnector,
+              private route: Router) {
   }
 
   ngOnInit(){}
@@ -26,11 +28,11 @@ export class FamilyCreatorComponent implements OnInit{
     var family = new Family();
     family.father = this.fatherCreatorStep.father;
     family.children = this.childCreatorStep.children;
-    this.http.post("http://localhost:8080/api/family/create", family).subscribe((res) => {
+    this.apiConnector.post('family/create', family, res=> {
       this.route.navigate(['/profile', res.father.id])
-    }, (err) => console.log(err));
-    family.father = null;
-    family.children = [];
+    }, err => {
+      console.log(err);
+    });
   }
 
 }
