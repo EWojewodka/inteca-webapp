@@ -1,0 +1,11 @@
+version: ‘2.0’
+services:
+  app:
+    build: .
+    command: “npm start”
+    ports:
+      - “3000:3000”
+    expose:
+      - “3000”
+    volumes:
+      - “./:/usr/inteca-webapp/”

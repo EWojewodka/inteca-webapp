@@ -1,4 +1,4 @@
-import { Component,  OnInit, ViewChild } from '@angular/core';
+import { Component,  OnInit, ViewChild, forwardRef } from '@angular/core';
 import FatherCreator from './father/father-creator';
 import ChildCreator from './children/child-creator';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import {ApiConnector} from '../../api/api-connector.service';
 })
 export class FamilyCreatorComponent implements OnInit{
 
-  @ViewChild(FatherCreator) fatherCreatorStep: FatherCreator;
+  @ViewChild(forwardRef(() => FatherCreator)) fatherCreatorStep: FatherCreator;
   @ViewChild(ChildCreator) childCreatorStep: ChildCreator;
 
   isLinear = true;
